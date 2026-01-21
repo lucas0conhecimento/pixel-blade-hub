@@ -1,35 +1,40 @@
--- main.lua - Carrega tudo (UI Rayfield + módulos)
+-- Pixel Blade Hub | Loader principal
 
-local repo = "https://raw.githubusercontent.com/SEU_USUARIO_AQUI/Lukas-PixelBlade-Hub/main/"
+local BASE_URL = "https://raw.githubusercontent.com/lucas0conhecimento/pixel-blade-hub/main/"
 
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- UI
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "Pixel Blade OP Hub | Lukas v3.2",
-    LoadingTitle = "Carregando Tudo OP...",
-    LoadingSubtitle = "NIGHTMARE + World 4 - Jan 2026",
-    ConfigurationSaving = {Enabled = true, FolderName = "LukasPB", FileName = "Config"},
+    Name = "Pixel Blade Hub | Lukas",
+    LoadingTitle = "Pixel Blade Hub",
+    LoadingSubtitle = "Loading modules...",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "PixelBladeHub",
+        FileName = "Config"
+    },
     KeySystem = false
 })
 
--- Carrega módulos
-local Combat  = loadstring(game:HttpGet(repo .. "modules/combat.lua"))()
-local Farm    = loadstring(game:HttpGet(repo .. "modules/farm.lua"))()
-local Movement = loadstring(game:HttpGet(repo .. "modules/movement.lua"))()
-local Visuals = loadstring(game:HttpGet(repo .. "modules/visuals.lua"))()
-local Misc    = loadstring(game:HttpGet(repo .. "modules/misc.lua"))()
+-- Load modules via HTTP (SEM require)
+local Combat   = loadstring(game:HttpGet(BASE_URL .. "modules/combat.lua"))()
+local Farm     = loadstring(game:HttpGet(BASE_URL .. "modules/farm.lua"))()
+local Movement = loadstring(game:HttpGet(BASE_URL .. "modules/movement.lua"))()
+local Visuals  = loadstring(game:HttpGet(BASE_URL .. "modules/visuals.lua"))()
+local Misc     = loadstring(game:HttpGet(BASE_URL .. "modules/misc.lua"))()
 
--- Setup cada módulo passando a Window
-Combat.Setup(Window)
-Farm.Setup(Window)
-Movement.Setup(Window)
-Visuals.Setup(Window)
-Misc.Setup(Window)
+-- Setup
+if Combat and Combat.Setup then Combat.Setup(Window) end
+if Farm and Farm.Setup then Farm.Setup(Window) end
+if Movement and Movement.Setup then Movement.Setup(Window) end
+if Visuals and Visuals.Setup then Visuals.Setup(Window) end
+if Misc and Misc.Setup then Misc.Setup(Window) end
 
 Rayfield:Notify({
-    Title = "Hub v3.2 Carregado!",
-    Content = "Tudo OP ativado - Hitbox invisível gigante, Auto Raid 60+ waves, Press K para abrir. ALT account!",
-    Duration = 10
+    Title = "Pixel Blade Hub",
+    Content = "Módulos carregados com sucesso.",
+    Duration = 6
 })
 
-print("[Lukas Cascavel] Hub v3.2 FULL carregado via GitHub")
+print("[Pixel Blade Hub] Carregado com sucesso via GitHub")
