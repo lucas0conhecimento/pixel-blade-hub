@@ -1,4 +1,9 @@
 -- modules/misc.lua - TP, Scanner, Attack Underground, Codes, Remove UI
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local LocalPlayer = Players.LocalPlayer
 
 local module = {}
 
