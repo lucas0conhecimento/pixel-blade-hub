@@ -1,4 +1,10 @@
 -- modules/movement.lua - Fly, Noclip, Speed, Infinite Jump
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local LocalPlayer = Players.LocalPlayer
+
 
 local module = {}
 
