@@ -1,4 +1,9 @@
 -- modules/farm.lua - Auto Farm, Auto Raid, Max Upgrades, Open Chests
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local LocalPlayer = Players.LocalPlayer
 
 local module = {}
 
